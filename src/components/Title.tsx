@@ -1,9 +1,9 @@
-
+import '.././Title.css'
 function Title() {
 
     return (
       <div>
-        <h1> Memory Game </h1>
+        <h1 className="title"> Memory Game </h1>
       </div>
     )
   }
