@@ -14,30 +14,31 @@ import image10h from '../assets/images/10h.png';
 import image11h from '../assets/images/11h.png';
 
 interface CardTypes {
-  id: number;
   src: string;
 }
 
 const cardImages: CardTypes[] = [
-  { id: 1, src: image1h },
-  { id: 2, src: image2h },
-  { id: 3, src: image3h },
-  { id: 4, src: image4h },
-  { id: 5, src: image5h },
-  { id: 6, src: image7h },
-  { id: 7, src: image8h },
-  { id: 8, src: image9h },
-  { id: 9, src: image10h },
-  { id: 10, src: image11h }
+  {  src: image1h },
+  {  src: image2h },
+  {  src: image3h },
+  { src: image4h },
+  {  src: image5h },
+  {  src: image7h },
+  { src: image8h },
+  {  src: image9h },
+  {  src: image10h },
+  { src: image11h }
 ];
 
 const shuffleCards = (): CardTypes[] => {
-  const shuffledCards = [...cardImages, ...cardImages]
+  let id= 0;
+  const doubledCardImages = [...cardImages, ...cardImages];
+  const shuffledCards = doubledCardImages
     .sort(() => Math.random() - 0.5)
-    
+    .map((card) => ({ ...card, id: id++}));
+
   return shuffledCards;
-}
-console.log(shuffleCards)
+};
 function Board() {
   const [cards, setCards] = useState<CardTypes[]>([]);
 
@@ -48,7 +49,8 @@ function Board() {
   const restartGame = () => {
     setCards(shuffleCards());
   };
-console.log(cards)
+
+  console.log(cards);
   return (
     <div className="board">
       {cards.map((card) => (
