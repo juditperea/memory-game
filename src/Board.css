@@ -1,14 +1,12 @@
 .board {
-    border: 6px solid rgb(203, 39, 249);
-    border-radius: 5%;
-    background-color: blue;
-    width: 800px;
-    height: 700px;
-    padding: 10px;
-    margin: 15px;
-    display: grid;
-    grid-template-columns: repeat(5, auto);
-    grid-template-rows: repeat(4, auto); 
-    
-  place-items: center;
+  border: 6px solid rgb(255, 5, 218);
+  border-radius: 5%;
+  background-color: rgb(254, 102, 236);
+  width: 875px; 
+  height: 760px; 
+  display: grid;
+  grid-template-columns: repeat(5, 150px); 
+  grid-template-rows: repeat(4, 150px); 
+  gap: 15px; 
+  margin-top:-25px;
 }

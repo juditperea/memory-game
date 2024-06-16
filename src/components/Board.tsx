@@ -15,32 +15,37 @@ import image11h from '../assets/images/11h.png';
 
 interface CardTypes {
   src: string;
+  id: number;
 }
 
-const cardImages: CardTypes[] = [
-  {  src: image1h },
-  {  src: image2h },
-  {  src: image3h },
+const cardImages: Omit<CardTypes, 'id'>[] = [
+  { src: image1h },
+  { src: image2h },
+  { src: image3h },
   { src: image4h },
-  {  src: image5h },
-  {  src: image7h },
+  { src: image5h },
+  { src: image7h },
   { src: image8h },
-  {  src: image9h },
-  {  src: image10h },
+  { src: image9h },
+  { src: image10h },
   { src: image11h }
 ];
 
 const shuffleCards = (): CardTypes[] => {
-  let id= 0;
+  let id = 0;
   const doubledCardImages = [...cardImages, ...cardImages];
   const shuffledCards = doubledCardImages
     .sort(() => Math.random() - 0.5)
-    .map((card) => ({ ...card, id: id++}));
+    .map((card) => ({ ...card, id: id++ }));
 
   return shuffledCards;
 };
-function Board() {
+
+const Board = () => {
   const [cards, setCards] = useState<CardTypes[]>([]);
+  const [firstCard, setFirstCard] = useState<CardTypes | null>(null);
+  const [secondCard, setSecondCard] = useState<CardTypes | null>(null);
+  const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
     setCards(shuffleCards());
@@ -48,17 +53,50 @@ function Board() {
 
   const restartGame = () => {
     setCards(shuffleCards());
+    setFirstCard(null);
+    setSecondCard(null);
   };
 
-  console.log(cards);
+  const handleChoice = (card: CardTypes) => {
+    if (!disabled) {
+      if (firstCard) {
+        setSecondCard(card);
+      } else {
+        setFirstCard(card);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (firstCard && secondCard) {
+      setDisabled(true);
+      if (firstCard.src === secondCard.src) {
+        nextTurn();
+      } else {
+        setTimeout(() => nextTurn(), 1000);
+      }
+    }
+  }, [firstCard, secondCard]);
+
+  const nextTurn = () => {
+    setFirstCard(null);
+    setSecondCard(null);
+    setDisabled(false);
+  };
+
   return (
     <div className="board">
       {cards.map((card) => (
-        <Card key={card.id} image={card} />
+        <Card
+          key={card.id}
+          image={card}
+          handleChoice={handleChoice}
+          flipped={card === firstCard || card === secondCard}
+        />
       ))}
-      <button onClick={restartGame}>Restart game</button>
+      <button onClick={restartGame}>New game</button>
     </div>
   );
-}
+};
 
 export default Board;

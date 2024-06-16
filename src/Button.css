@@ -1,24 +1,28 @@
 button {
   text-align: center;
   border-radius: 8px;
-  border: 1px solid white;
+  border: 2px solid rgb(255, 255, 255);
+  border-style:outset;
   padding: 0.6em 1.2em;
-  margin: 5px;
-  font-size: 1em;
-  font-weight: 500;
+  margin-top: 35px;
+  margin-left: 30px;
+  height:50px;
+  width:140px;
+  font-size: 18px;
+  font-weight: 600;
   font-family: inherit;
-  background-color: rgb(210, 3, 158);
+  background-color: rgb(241, 5, 182);
   color: white;
   cursor: pointer;
-  transition: border-color 0.25s, box-shadow 0.25s;
   box-shadow: 
-    0 0 5px rgb(230, 0, 176),
+    0 0 5px rgb(246, 19, 193),
     0 0 10px rgb(255, 3, 234);
 }
 
 button:hover {
-  border: 1px solid #646cff;
+  border: 2px solid #ff96ef;
+  border-style: inset;
   box-shadow: 
-    0 0 40px rgb(105, 0, 74)
+    0 0 40px rgb(221, 0, 147)
 }
 
