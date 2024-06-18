@@ -10,9 +10,10 @@ interface CardProps {
   image: CardTypes;
   handleChoice: (card: CardTypes) => void;
   flipped: boolean;
+  paired: boolean; 
 }
 
-const Card = ({ image, handleChoice, flipped }: CardProps) => {
+const Card = ({ image, handleChoice, flipped, paired }: CardProps) => {
   const flipCard = () => {
     handleChoice(image);
   };
@@ -20,7 +21,8 @@ const Card = ({ image, handleChoice, flipped }: CardProps) => {
   return (
     <div className="card">
       <img
-        className="card-image"
+       
+       className={`card-image ${paired ? 'paired' : ''}`}
         src={flipped ? image.src : backCardImage}
         alt={flipped ? 'front card' : 'back card'}
         onClick={flipCard}

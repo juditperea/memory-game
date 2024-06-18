@@ -73,7 +73,6 @@ const Board = () => {
     if (firstCard && secondCard) {
       setDisabled(true);
       if (firstCard.src === secondCard.src) {
-
         setPairs((previousPair) => [...previousPair, firstCard.id, secondCard.id]);
         nextTurn();
       } else {
@@ -96,6 +95,7 @@ const Board = () => {
           image={card}
           handleChoice={handleChoice}
           flipped={card === firstCard || card === secondCard || pairs.includes(card.id)}
+          paired={pairs.includes(card.id)}
         />
       ))}
       <button onClick={restartGame}>New game</button>
