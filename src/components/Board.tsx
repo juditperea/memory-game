@@ -46,6 +46,7 @@ const Board = () => {
   const [firstCard, setFirstCard] = useState<CardTypes | null>(null);
   const [secondCard, setSecondCard] = useState<CardTypes | null>(null);
   const [disabled, setDisabled] = useState(false);
+  const [pairs, setPairs] = useState<number[]>([]); 
 
   useEffect(() => {
     setCards(shuffleCards());
@@ -55,6 +56,7 @@ const Board = () => {
     setCards(shuffleCards());
     setFirstCard(null);
     setSecondCard(null);
+    setPairs([]); 
   };
 
   const handleChoice = (card: CardTypes) => {
@@ -71,6 +73,8 @@ const Board = () => {
     if (firstCard && secondCard) {
       setDisabled(true);
       if (firstCard.src === secondCard.src) {
+
+        setPairs((previousPair) => [...previousPair, firstCard.id, secondCard.id]);
         nextTurn();
       } else {
         setTimeout(() => nextTurn(), 1000);
@@ -91,7 +95,7 @@ const Board = () => {
           key={card.id}
           image={card}
           handleChoice={handleChoice}
-          flipped={card === firstCard || card === secondCard}
+          flipped={card === firstCard || card === secondCard || pairs.includes(card.id)}
         />
       ))}
       <button onClick={restartGame}>New game</button>
