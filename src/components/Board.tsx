@@ -50,6 +50,13 @@ const Board = () => {
   const [pairs, setPairs] = useState<number[]>([]); 
   const [turns, setTurns] = useState(0);
   const [isExploding, setIsExploding] = useState(false);
+  const [confettiProps, setConfettiProps] = useState({
+    force: 0.8,
+    duration: 3000,
+    particleCount: 250,
+    width: 1600,
+  });
+
 
   useEffect(() => {
     setCards(shuffleCards());
@@ -79,11 +86,16 @@ const Board = () => {
       if (firstCard.src === secondCard.src) {
         setPairs((previousPair) => [...previousPair, firstCard.id, secondCard.id]);
         nextTurn();
+        
+      if (pairs.length + 2 === cards.length) {
+        setIsExploding(true);
+      }
       } else {
         setTimeout(() => nextTurn(), 1000);
       }
     }
-  }, [firstCard, secondCard]);
+  }, [firstCard, secondCard, pairs, cards.length]);
+
 
   const nextTurn = () => {
     setFirstCard(null);
@@ -105,7 +117,7 @@ const Board = () => {
       ))}
       <button onClick={restartGame}>New game</button>
       <div className="turns">Turns: {turns}</div> 
-      {isExploding && <ConfettiExplosion />}
+      {isExploding && <ConfettiExplosion {...confettiProps} />}
     </div>
   );
 };
