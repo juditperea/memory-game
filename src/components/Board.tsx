@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import ConfettiExplosion from 'react-confetti-explosion';
 import Card from './Card';
 import '.././Board.css';
 import '.././Button.css';
@@ -47,6 +48,8 @@ const Board = () => {
   const [secondCard, setSecondCard] = useState<CardTypes | null>(null);
   const [disabled, setDisabled] = useState(false);
   const [pairs, setPairs] = useState<number[]>([]); 
+  const [turns, setTurns] = useState(0);
+  const [isExploding, setIsExploding] = useState(false);
 
   useEffect(() => {
     setCards(shuffleCards());
@@ -57,6 +60,7 @@ const Board = () => {
     setFirstCard(null);
     setSecondCard(null);
     setPairs([]); 
+    setTurns(0); 
   };
 
   const handleChoice = (card: CardTypes) => {
@@ -85,6 +89,7 @@ const Board = () => {
     setFirstCard(null);
     setSecondCard(null);
     setDisabled(false);
+    setTurns((turns) => turns + 1);
   };
 
   return (
@@ -99,6 +104,8 @@ const Board = () => {
         />
       ))}
       <button onClick={restartGame}>New game</button>
+      <div className="turns">Turns: {turns}</div> 
+      {isExploding && <ConfettiExplosion />}
     </div>
   );
 };
