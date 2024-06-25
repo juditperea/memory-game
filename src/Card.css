@@ -1,36 +1,31 @@
 .card {
-    width: 150px;
-    height: 150px;
-  }
-  
-  .card-image {
-    width: 100%;
-    height: 100%;
-    border-radius: 10%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    cursor: pointer;
-  }
-  .paired {
-    
-    border: 3px solid yellow;
-  }
-  .frontCard, .backCard {
-    border: 2px solid rgb(248, 98, 206);
-    border-radius: 10%;
-    height: 150px;
-    width: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  img {
-    max-height: 100%;
-    max-width: 100%;
-    border-radius: 10%;
-    
-  }
-  
-  
-  
+  width: 150px;
+  height: 150px;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 10%;
+}
+
+.paired {
+  border: 3px solid yellow;
+}
+
+.frontCard,
+.backCard {
+  border: 2px solid rgb(248, 98, 206);
+  border-radius: 10%;
+  height: 150px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

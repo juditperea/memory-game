@@ -1,34 +1,23 @@
-import '.././Card.css';
-import backCardImage from '../assets/images/back.png';
-
-interface CardTypes {
-  src: string;
-  id: number;
-}
-
-interface CardProps {
-  image: CardTypes;
-  handleChoice: (card: CardTypes) => void;
-  flipped: boolean;
-  paired: boolean; 
-}
+import { CardProps } from '../types'
+import '.././Card.css'
+import backCardImage from '../assets/images/back.png'
 
 const Card = ({ image, handleChoice, flipped, paired }: CardProps) => {
+
   const flipCard = () => {
-    handleChoice(image);
-  };
+    if (!flipped) {
+      handleChoice(image)
+    }
+  }
 
   return (
-    <div className="card">
+    <div className="card" onClick={flipCard}>
       <img
-       
-       className={`card-image ${paired ? 'paired' : ''}`}
+        className={`card-image ${paired ? 'paired' : ''}`}
         src={flipped ? image.src : backCardImage}
-        alt={flipped ? 'front card' : 'back card'}
-        onClick={flipCard}
       />
     </div>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card
