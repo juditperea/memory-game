@@ -1,30 +1,62 @@
-# React + TypeScript + Vite
+# Memory Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my Memory Game project developed with React and TypeScript!
 
-Currently, two official plugins are available:
+This memory game features 10 pairs of cards with designs of characters from Hunter X Hunter, one of the most famous and my favorite animes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
 
-## Expanding the ESLint configuration
+- **React**: for the user interface.
+- **TypeScript**: for more robust and scalable code.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Key Features
 
-- Configure the top-level `parserOptions` property like this:
+- **Interactive Game**: The user can match cards and receive visual feedback.
+- **Confetti Animations**: to celebrate when the game is completed.
+- **Restart Functionality**: to start a new game at any time.
+- **Turn Increment**: Each time the user matches two cards, the turn counter increases.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Prerequisites
+
+Before you begin, make sure you have the following installed on your system:
+
+- [Node.js](https://nodejs.org/) (recommended version: 14.x or higher)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install)
+
+## How to Run the Project
+
+Follow these steps to run the project on your local machine:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/juditperea/memory-game.git
+   cd memory-game
+Install dependencies:
+
+```bash
+yarn install
+```
+Run the project in development mode:
+
+```bash
+yarn run dev
+```
+Open the project in your browser:
+It should automatically open at http://localhost:3000, but if it doesn't, open your browser and go to http://localhost:3000.
+
+Open the project in Visual Studio Code:
+If you prefer to work in Visual Studio Code, you can easily open the project with the following command:
+
+```bash
+code .
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Contribution:
+
+If you would like to contribute to this project, please follow these steps:
+
+- Fork the project.
+- Create a new branch (git checkout -b feature/new-feature).
+- Make your changes and commit them (git commit -am 'Add new feature').
+- Push to the branch (git push origin feature/new-feature).
+- Open a Pull Request.

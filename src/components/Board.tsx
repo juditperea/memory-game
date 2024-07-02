@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CardTypes } from '../types';
 import ConfettiExplosion from 'react-confetti-explosion';
 import Card from './Card';
@@ -87,7 +87,7 @@ const Board = () => {
     if (!isDisabled) {
       firstCardChoice ? setSecondCardChoice(card) : setFirstCardCChoice(card)
     }
-  };
+  }
 
   const restartGame = () => {
     setCards(shuffleCards())
@@ -96,7 +96,7 @@ const Board = () => {
     setPairs([])
     setTurns(0)
     setHasConfetti(false)
-  };
+  }
 
   return (
     <div className="board">
@@ -111,7 +111,7 @@ const Board = () => {
       ))}
       <button onClick={restartGame}>New game</button>
       <div className="turns">Turns: {turns}</div>
-      {hasConfetti && <ConfettiExplosion {...confettiProps} />}
+      {hasConfetti && <ConfettiExplosion {...confettiProps} data-testid="confetti" />}
     </div>
   )
 }

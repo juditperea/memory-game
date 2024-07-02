@@ -1,4 +1,5 @@
 import { CardProps } from '../types'
+import React from 'react';
 import '.././Card.css'
 import backCardImage from '../assets/images/back.png'
 
