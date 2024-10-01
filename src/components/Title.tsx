@@ -1,4 +1,5 @@
 import '.././Title.css'
+import React from 'react';
 
 const Title = () => (
   <div>
